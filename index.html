@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>電商QA</title>
+</head>
+<body>
+    <h1>查詢電商疑問</h1>
+    <input type="text" id="query" placeholder="Enter your question">
+    <button onclick="search()">Search</button>
+    <p id="result"></p>
+
+    <script>
+        function search() {
+            var query = document.getElementById('query').value;
+            var url = 'https://script.google.com/macros/s/AKfycbyNb9XQw6Q-GTKk3rr5OkJ7vyybCy-E2C_lLWERExpeQUi0ifFxCx-mFPxS3SjGI_pJug/exec?q=' + encodeURIComponent(query);
+
+            fetch(url)
+                .then(response => response.text())
+                .then(text => document.getElementById('result').innerText = text)
+                .catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+</html>
